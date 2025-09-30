@@ -1,0 +1,38 @@
+
+header {
+background: salmon;
+}
+nav {
+background: cornflowerblue;
+}
+main {
+background: lightblue;
+}
+aside {
+background: lightgreen;
+}
+article {
+background: deepskyblue;
+}
+figure {
+background: gold;
+}
+p {
+background: khaki;
+}
+section {
+background: royalblue;
+}
+footer {
+background: mediumseagreen;
+}
+
+.nanum-pen-script-regular {
+    font-family: "Nanum Pen Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+#temp1 {
+    color: yellow;
+}

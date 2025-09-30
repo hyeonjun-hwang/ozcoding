@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS position 속성 비교</title>
+    <link rel="stylesheet" href="./day_04_02.css" />
+  </head>
+  <body>
+    <div style="display: block; background: #ffd">나는 block</div>
+    <div style="display: block; background: #aff">
+      나도 block (밑줄에 표시됨)
+
+      <h2>CSS position 속성 비교</h2>
+
+      <div class="box static">static<br />(기본값)</div>
+      <div class="box relative">relative<br />(top: 20px; left: 30px;)</div>
+
+      <div class="absolute-parent">
+        <div class="box absolute">absolute<br />(top: 10px; left: 10px;)</div>
+      </div>
+
+      <div class="box fixed">fixed<br />(우측 하단 고정)</div>
+
+      <div class="container">
+        <div class="box sticky">sticky<br />(top: 0;)</div>
+        <div class="filler">
+          스크롤을 내려봐!<br />sticky 예시 공간용 filler
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

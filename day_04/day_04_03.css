@@ -1,0 +1,76 @@
+body {
+  margin: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.display-block {
+  display: block;
+  background: #71cbd9;
+  color: #fff;
+  width: 160px;
+  margin-bottom: 16px;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* inline은 한 줄에 여러 요소가 올 수 있음 */
+.display-inline {
+  display: inline;
+  background: #7ddf6a;
+  padding: 8px 24px;
+  border-radius: 8px;
+  margin-right: 10px;
+  color: #fff;
+}
+
+/* inline-block은 크기를 줄 수 있고, 한 줄 배치됨 */
+.display-inline-block {
+  display: inline-block;
+  background: #ffa447;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  text-align: center;
+  margin-right: 10px;
+  color: #fff;
+}
+
+/* none은 화면과 공간에서 안 보임 */
+.display-none {
+  display: none;
+}
+
+/* flex는 자식들을 한 줄에 정렬하고, 배분 */
+.display-flex {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.display-flex > div {
+  background: #e35a7c;
+  color: #fff;
+  width: 88px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* grid는 2줄 2칸씩 배치 */
+.display-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.display-grid > div {
+  background: #4666ff;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  text-align: center;
+}
