@@ -1,0 +1,115 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+}
+
+.contacts-app {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+/* 헤더 스타일 */
+.contacts-header {
+  border-bottom: 1px solid #eee;
+  padding: 15px 25px;
+}
+
+.contacts-header__title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.contacts-header__icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* 연락처 컨테이너 및 추가 버튼 */
+.contacts-container {
+  padding: 25px;
+}
+
+.contact-add__button {
+  float: right; /* 이미지를 따라 오른쪽으로 배치 */
+  background: none;
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #333;
+}
+
+.contact-add__icon {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 연락처 목록 (테이블 형식) */
+.contact-list {
+  clear: both; /* float 해제 */
+  padding-top: 10px;
+}
+
+.contact-list__row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 헤더 행 스타일 */
+.contact-list__row--header {
+  font-weight: bold;
+  color: #666;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+/* 각 항목의 너비 설정 (4개의 열) */
+.contact-list__item {
+  padding: 0 10px;
+  /* 이름을 제일 길게, 나머지는 균등하게 */
+  width: 25%;
+  flex-shrink: 0;
+}
+
+/* 이름, 이메일, 전화번호는 비슷한 너비 */
+.contact-list__item--name,
+.contact-list__item--email,
+.contact-list__item--phone {
+  width: 30%; /* 너비를 30%씩 할당 */
+}
+
+/* 액션 버튼 열은 가장 좁게 */
+.contact-list__item--actions {
+  width: 10%; /* 너비를 10%만 할당 */
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-right: 0;
+}
+
+/* 액션 버튼 스타일 */
+.contact-action__edit,
+.contact-action__delete {
+  cursor: pointer;
+  font-size: 14px;
+  color: #888;
+}

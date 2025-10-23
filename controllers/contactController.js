@@ -15,8 +15,9 @@ const getAllContacts = asyncHandler(async (req, res) => {
   const contactsList = contacts.map((i) => i.toJSON());
   console.log("contactsList: ", contactsList);
 
-  const filePath = path.join(__dirname, "..", "study_node", "contacts.html");
-  res.status(200).sendFile(filePath);
+  // const filePath = path.join(__dirname, "..", "study_node", "contacts.html");
+  res.status(200).json(contactsList);
+  console.log("GET /contacts 응답 완료");
 });
 
 // @desc Create a contact

@@ -46,5 +46,3 @@ app.listen(port, () => {
 });
 
 // 임시
-const tempPath = path.join(__dirname, "/index.html");
-console.log(tempPath);

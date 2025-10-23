@@ -3,11 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="./app.js"></script>
-    <link rel="stylesheet" href="./style.css" />
+    <title>My Contacts</title>
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <h1>여기는 메인 페이지다dd</h1>
+    <div class="contacts-app">
+      <header class="contacts-header">
+        <h1 class="contacts-header__title">
+          <span class="contacts-header__icon">👤</span>
+          My Contacts
+        </h1>
+      </header>
+
+      <div class="contacts-container">
+        <button class="contact-add__button">
+          <span class="contact-add__icon">+</span>
+          연락처 추가
+        </button>
+
+        <div class="contact-list">
+          <div class="contact-list__row contact-list__row--header">
+            <span class="contact-list__item contact-list__item--name"
+              >이름</span
+            >
+            <span class="contact-list__item contact-list__item--email"
+              >메일 주소</span
+            >
+            <span class="contact-list__item contact-list__item--phone"
+              >전화번호</span
+            >
+            <span class="contact-list__item contact-list__item--actions"></span>
+          </div>
+
+          <div class="contact-list__row">
+            <span class="contact-list__item contact-list__item--name"
+              >Username</span
+            >
+            <span class="contact-list__item contact-list__item--email"
+              >example@gmail.com</span
+            >
+            <span class="contact-list__item contact-list__item--phone"
+              >123456</span
+            >
+            <div class="contact-list__item contact-list__item--actions">
+              <span class="contact-action__edit">✏️</span>
+              <span class="contact-action__delete">×</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>
