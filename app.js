@@ -46,3 +46,19 @@ app.listen(port, () => {
 });
 
 // 임시
+
+const todos = [
+  { a: true, b: 2 },
+  { a: false, c: 4 },
+  { a: false, d: 5 },
+  { a: true, e: 6 },
+  { a: false, f: 7 },
+];
+
+// 화살표 함수를 사용하여 reduce 콜백 로직을 한 줄로 작성
+const falseCount = todos.reduce((acc, item) => {
+  // item.a가 false면 acc + 1을 반환하고, 아니면 acc를 반환
+  return item.a === false ? acc + 1 : acc;
+}, 0); // 초기값 0
+
+console.log("falseCount:", falseCount); // 출력: falseCount: 3

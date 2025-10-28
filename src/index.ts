@@ -62,3 +62,23 @@ class Person4 implements IPerson4 {
 
 // let person3 = new Person3("hwang");
 // console.log(person3);
+
+let address: any = {
+  country: "Korea",
+  city: "Seoul",
+  address1: "Gangnam-gu",
+  address2: "Sinsa-dong 123-456",
+  address3: "789 street, 2 Floor ABC building",
+};
+
+const { address1, address2, ...detail } = address;
+
+console.log(detail);
+
+// --
+let person: object = {
+  name: "hwang",
+  age: 30,
+};
+
+// console.log(person.name);

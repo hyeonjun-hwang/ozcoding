@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
-    "oz": "nodemon study_js/day_17/day_17_result.js",
+    "oz": "nodemon study_js/day_18/day_18.js",
     "ts-dev-ts-node": "node --loader ts-node/esm ./src/index.ts",
     "ts-dev": "tsx watch src/index.ts",
     "ts-check": "tsc --noEmit",
