@@ -72,11 +72,8 @@ function renderTodos() {
       return parseInt(match[1], 10);
     }
   }
-  // 작업중 ...
-  //   todos.sort((a,b) => {
-  //     const numA = getSortNum(a.b)
-  //   })
-  //   console.log(getSortNum("asd #2"));
+
+  console.log(getSortNum("asd #2"));
   //
 
   todos.forEach((todo, index) => {
