@@ -1,0 +1,97 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-app {
+  margin: 100px;
+  padding: 30px 40px;
+  width: 100%;
+  max-width: 450px;
+  border: 1px gray solid;
+  border-radius: 12px;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.input-group input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.add-btn {
+  background-color: rgb(91, 91, 91);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 24px;
+  padding: 0;
+  border: none;
+}
+
+/* 개별 투두 항목 */
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 18px 14px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid gray;
+  font-size: 16px;
+}
+
+.task-item span {
+  flex-grow: 1;
+  padding: 0 10px;
+  color: #444;
+}
+
+.checkbox {
+  font-size: 18px;
+  color: gray;
+}
+
+.completed .checkbox {
+  color: darkgray;
+}
+
+.completed span {
+  text-decoration: line-through;
+  color: #a7a7a7;
+}
+
+.delete-btn {
+  color: #a7a7a7;
+  font-size: 14px;
+}
+
+.footer-info {
+  margin-top: 24px;
+}
+
+.remaining {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  color: black;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 14px;
+  color: darkgray;
+  text-align: left;
+}
