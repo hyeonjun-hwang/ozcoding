@@ -20,6 +20,11 @@ const todoItem = document.querySelector(".task-item");
 // 로컬 스토리지에 있는 할 일 리스트
 const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
+// 로컬 스토리지 저장
+function saveTodos() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
 // 버튼 클릭시 로컬에 데이터 추가
 addBtn.addEventListener("click", () => {
   // 인풋 값 추출
@@ -36,7 +41,7 @@ addBtn.addEventListener("click", () => {
   });
 
   // todos 배열을 로컬 스토리지에 저장
-  localStorage.setItem("todos", JSON.stringify(todos));
+  saveTodos();
 
   // 등록 알럿 및 인풋 초기화
   alert("할 일이 등록되었습니다");
@@ -52,18 +57,14 @@ function renderTodos() {
   // todos에 아무것도 없을때
   if (todos.length === 0) {
     const emptyMessage = document.createElement("p");
+
+    emptyMessage.classList.add("task-list__empty");
     emptyMessage.innerText = `할 일을 추가해주세요~!`;
 
     todoList.append(emptyMessage);
+
+    return;
   }
-
-  // 여기서 부터 작성..
-  // 1. todos에 있는 inputValue를 가져온다
-  // 2. 거기서 정규식으로 #숫자 형태를 추출한다
-  // 3. 추출한 그 숫자를 가지고 배열을 sort 한다
-  // console.log("todos :", todos);
-
-  console.log("before :", todos);
 
   // inputValue #n 추출용 함수
   function getSortNum(str) {
@@ -74,7 +75,6 @@ function renderTodos() {
       return parseInt(match[1], 10);
     }
   }
-  console.log(getSortNum("asdsad"));
 
   // 배열을 #n 순서에 맞게 재배열 해서 반환 (내림차순)
   todos.sort((a, b) => {
@@ -83,9 +83,7 @@ function renderTodos() {
     return numB - numA;
   });
 
-  console.log("after: ", todos);
-
-  // todos 순회하면서 화면 그리기
+  // 재배열된 todos 받아 순회하면서 화면 그리기
   todos.forEach((todo, index) => {
     // todo list 요소 생성 및 클래스 할당
     const todoItem = document.createElement("div");
@@ -93,34 +91,30 @@ function renderTodos() {
     todoItem.setAttribute("data-index", index);
 
     // todo list 자식 요소 및 속성 할당
-    const todoText = document.createElement("span");
+    const todoText = document.createElement("span"); // 텍스트 들어가는 영역
     todoText.innerText = todo.inputValue;
 
-    const deletBtn = document.createElement("i");
+    const deletBtn = document.createElement("i"); // 삭제 버튼 아이콘
     deletBtn.classList.add("fas", "fa-times", "delete-btn");
 
-    const checkBox = document.createElement("i");
+    const checkBox = document.createElement("i"); // 체크박스
 
-    todoItem.append(checkBox, todoText, deletBtn); // todo list 자식에 요소 생성
-
-    if (!todos[index].check) {
+    if (!todo.check) {
       checkBox.classList.add("far", "fa-square", "checkbox");
-
       todoText.classList.remove("text-deco");
     } else {
       checkBox.classList.add("fas", "fa-check-square", "checkbox");
-
       todoText.classList.add("text-deco");
     }
+
+    todoItem.append(checkBox, todoText, deletBtn); // todo list 자식에 요소 생성
 
     // todo list 삭제 이벤트 로직
     deletBtn.addEventListener("click", () => {
       const isConfirm = confirm("할 일을 삭제하시겠습니까?");
-      if (!isConfirm) {
-        return;
-      } else {
+      if (isConfirm) {
         todos.splice(index, 1);
-        localStorage.setItem("todos", JSON.stringify(todos));
+        saveTodos();
         renderTodos();
       }
     });
@@ -128,71 +122,22 @@ function renderTodos() {
     // todo 컨테이너 자식에 todo list 생성
     todoList.append(todoItem);
   });
+
+  renderFooter();
 }
-
-renderTodos();
-
-// 요소 추출
-const getCheckBox = document.querySelector(".checkbox"); // todolist의 체크박스
-const getItemText = document.querySelector(".task-item span"); // todolist의 텍스트
-const getdeleteBtn = document.querySelector(".delete-btn"); // todolist의 삭제 버튼
-
-// 체크박스 클릭 이벤트 로직
-todoList.addEventListener("click", (event) => {
-  const isCheckBox = event.target.classList.contains("checkbox"); // 체크박스 추출
-  const todosText = event.target.parentElement.querySelector("span"); // 텍스트 추출
-
-  if (isCheckBox) {
-    const isChecked = event.target.classList.contains("fa-check-square");
-    const getIndex = event.target.parentElement.getAttribute("data-index"); // todo-item의 data-index 값 추출
-    const targetData = todos[getIndex]; // todos배열에서 target 인덱스 객체 추출
-
-    if (isChecked) {
-      //체크 off->on
-      event.target.classList.remove("fas", "fa-check-square");
-      event.target.classList.add("far", "fa-square");
-
-      todosText.classList.remove("text-deco");
-
-      // check 프로퍼티 값을 false로 변경
-      //   const targetData = todos[getIndex]; // todos배열에서 target 인덱스 객체 추출
-      targetData.check = false; // check 속성 변경
-      todos.splice(getIndex, 1, targetData); // todos 배열 데이터 변경
-      localStorage.setItem("todos", JSON.stringify(todos)); // 변경한 데이터 로컬에 저장
-
-      renderFooter();
-    } else {
-      // 체크 on->off
-      event.target.classList.add("fas", "fa-check-square", "checkbox");
-      event.target.classList.remove("far", "fa-square");
-
-      todosText.classList.add("text-deco");
-
-      // check 프로퍼티 값을 true로 변경
-      //   const targetData = todos[getIndex]; // todos배열에서 target 인덱스 객체 추출
-      targetData.check = true; // check 속성 변경
-      todos.splice(getIndex, 1, targetData); // todos 배열 데이터 변경
-      localStorage.setItem("todos", JSON.stringify(todos)); // 변경한 데이터 로컬에 저장
-
-      renderFooter();
-    }
-  }
-});
 
 // 푸터 그리는 함수
 function renderFooter() {
-  // 푸터 초기화
-  document.querySelector(".footer-info").innerHTML = "";
+  // 푸터 컨테이너 추출 및 초기화
+  const footerContainer = document.querySelector(".footer-info");
+  footerContainer.innerHTML = "";
 
-  // task-item 중에서 check : false인 것의 개수 계산
-  const uncheckCount = todos.reduce((acc, item) => {
-    return !item.check ? acc + 1 : acc;
-  }, 0);
+  // 체크 안된 데이터 추출 (남은 todo 개수 계산용)
+  const notCheckedTodos = todos.filter((todo) => !todo.check);
 
   // 남은 todo 개수
-  const footerContainer = document.querySelector(".footer-info");
   const displayRemainTodos = document.createElement("p");
-  displayRemainTodos.innerText = `Your remaining todos: ${uncheckCount}`;
+  displayRemainTodos.innerText = `Your remaining todos: ${notCheckedTodos.length}`;
   displayRemainTodos.classList.add("remaining");
 
   // 인용문
@@ -204,4 +149,25 @@ function renderFooter() {
   footerContainer.append(displayRemainTodos, createQuote);
 }
 
-renderFooter();
+renderTodos();
+
+// 체크박스 클릭 이벤트 로직
+todoList.addEventListener("click", (event) => {
+  const isCheckBox = event.target.classList.contains("checkbox");
+  if (isCheckBox) {
+    const index = event.target.parentElement.getAttribute("data-index"); // todo-item 요소의 data-index 값 추출
+    const todo = todos[index]; // todos에서 target 데이터 추출
+    const todosText = event.target.parentElement.querySelector("span"); // 텍스트 추출
+
+    // 체크 여부에 따라 이벤트 토글
+    event.target.classList.toggle("fas");
+    event.target.classList.toggle("far");
+    event.target.classList.toggle("fa-square");
+    event.target.classList.toggle("fa-check-square");
+    todosText.classList.toggle("text-deco");
+
+    todo.check = !todo.check; // check 여부 변경
+    saveTodos(); // 변경 데이터 저장
+    renderFooter(); // 푸터 랜더링
+  }
+});
