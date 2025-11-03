@@ -76,9 +76,42 @@ const { address1, address2, ...detail } = address;
 console.log(detail);
 
 // --
-let person: object = {
+
+import type { INameable } from "./utils/INameable.js";
+
+let person: INameable = {
   name: "hwang",
-  age: 30,
 };
 
-// console.log(person.name);
+console.log(person.name);
+
+// --
+const makeObject = (key: string, value: number) => ({ [key]: value });
+
+console.log(makeObject("num", 2));
+
+// --
+type keyValueType = {
+  [key: string]: string;
+};
+
+// --
+type funcType = (key: string, value: number) => { [key: string]: number };
+
+const makeObject2: funcType = (key, value) => ({ [key]: value, koko: 23 });
+
+console.log(makeObject2("dd", 2));
+
+// class 메서드와 this
+class AAA {
+  value: number = 1;
+  func(): void {
+    console.log(`값은 ${this.value}!!`);
+  }
+}
+
+const aaa = new AAA();
+aaa.func();
+
+// --
+let url = "www.naver";
