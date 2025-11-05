@@ -7,11 +7,11 @@ function App() {
   return (
     <div className="m-5">
       <Header />
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col items-center justify-center gap-10 mt-40">
         <Logo />
         <Search />
+        <ShortCut />
       </div>
-      <ShortCut />
     </div>
   );
 }

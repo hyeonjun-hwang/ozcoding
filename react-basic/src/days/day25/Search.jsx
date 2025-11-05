@@ -23,7 +23,11 @@ function Search() {
         </a>
 
         {/* 인풋 */}
-        <input className="h-full w-full outline-0 mx-3" type="text" />
+        <input
+          className="h-full w-full outline-0 mx-3"
+          type="text"
+          placeholder="Google 검색 또는 URL 입력"
+        />
 
         {/* 우측 아이콘 그룹 */}
         <div className="flex items-center ml-auto gap-4">
