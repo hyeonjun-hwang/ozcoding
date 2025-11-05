@@ -13,8 +13,8 @@ import { createRoot } from "react-dom/client";
 // );
 
 // ======== 과제 or 스터디 용========
-import App from "./days/day25/App.jsx";
-import "./index.css";
+import App from "./days/day26/App.jsx";
+// import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
