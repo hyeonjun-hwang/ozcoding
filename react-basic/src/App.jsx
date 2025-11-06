@@ -47,7 +47,6 @@ function App() {
   return (
     <div>
       <h1>app1 이다</h1>
-      <Header />
     </div>
   );
 }
