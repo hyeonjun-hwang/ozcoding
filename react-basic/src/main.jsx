@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-// ======== 메인 ========
+// ======== 기본 ========
 // import { App } from "./App.jsx";
 // import "./index.css";
 

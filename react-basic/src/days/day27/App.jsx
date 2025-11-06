@@ -1,8 +1,9 @@
-import React from "react";
-import AppHeader from "../../components/common/AppHeader";
+import AppHeader from "@/components/common/AppHeader";
 import AppBanner from "@/components/common/AppBanner";
 import AppFamilySite from "@/components/common/AppFamilySite";
-import { Skeleton } from "@/components/ui/skeleton";
+import CarouselBanner from "@/components/common/CarouselBanner";
+import Category from "@/components/common/Category";
+import Content from "@/components/common/Content";
 
 function App() {
   return (
@@ -16,14 +17,15 @@ function App() {
       {/* 헤더 */}
       <AppHeader />
 
-      <main>
-        <section className="mt-6 flex items-center gap-6 overflow-x-auto scrollbar-hide">
-          <Skeleton className="min-w-[520px] w-[520px] h-80" />
-          <Skeleton className="min-w-[520px] w-[520px] h-80" />
-          <Skeleton className="min-w-[520px] w-[520px] h-80" />
-          <Skeleton className="min-w-[520px] w-[520px] h-80" />
-          <Skeleton className="min-w-[520px] w-[520px] h-80" />
-        </section>
+      <main className="w-full h-full">
+        {/* 캐러셀 */}
+        <CarouselBanner />
+
+        {/* 카테고리 */}
+        <Category />
+
+        {/* 콘텐츠 */}
+        <Content />
       </main>
     </div>
   );
