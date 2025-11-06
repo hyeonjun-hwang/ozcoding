@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Skeleton } from "../ui/skeleton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Eye, Heart } from "lucide-react";
@@ -81,16 +82,20 @@ function Content() {
     <div className="px-16 py-4 flex flex-wrap gap-6">
       {/* 카드 */}
       {contents.map((content, i) => {
+        const [isLoading, setIsLoading] = useState(true);
         return (
           <div className="w-fit h-fit flex flex-col gap-3">
             {/* 이미지 */}
-            <div>
-              <img
-                className="rounded-md"
-                src={`https://loremflickr.com/300/300/cartoon,vector,nature?random=${i}`}
-                alt=""
-              />
-              {/* <Skeleton className="w-65 h-65 rounded-md" /> */}
+            <div className="w-75 h-75">
+              {isLoading && <Skeleton className="w-full h-full bg-gray-400" />}
+              <div>
+                <img
+                  className="w-full h-full rounded-md"
+                  src={`https://loremflickr.com/300/300/cartoon,vector,nature?random=${i}`}
+                  onLoad={() => setIsLoading(false)}
+                  alt=""
+                />
+              </div>
             </div>
 
             <div className="flex justify-between">

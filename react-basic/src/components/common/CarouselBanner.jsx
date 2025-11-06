@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Skeleton } from "../ui/skeleton";
 
 function CarouselBanner() {
@@ -27,6 +28,7 @@ function CarouselBanner() {
     <div>
       <section className="pt-10 pb-16 flex items-center gap-6 overflow-x-auto scrollbar-hide">
         {banners.map((banner, index) => {
+          const [isLoading, setIsLoading] = useState(true);
           return (
             <div className="relative min-w-135 min-h-80 flex items-end">
               {/* 타이틀, 디스크립션 */}
@@ -37,9 +39,15 @@ function CarouselBanner() {
 
               {/* 이미지 */}
               <div className="absolute w-135 h-25 rounded-b-sm bg-linear-to-t from-gray-900/90 to-gray-0 z-2"></div>
+              {isLoading && (
+                <Skeleton className="absolute w-full h-full z-1 bg-gray-400" />
+              )}
               <img
                 className="w-full h-full rounded-sm z-1"
                 src={`https://loremflickr.com/540/320/cartoon,vector,nature?random=${index}`}
+                onLoad={() => {
+                  setIsLoading(false);
+                }}
                 alt=""
               />
             </div>
